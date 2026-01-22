@@ -1,109 +1,169 @@
-# ATS Resume Analyser
+# ATS Resume Analyzer
 
-A full-stack resume analysis tool demonstrating programmatic ATS-style scoring and role/skill matching: a FastAPI backend for analysis and a Vite + React frontend for providing resume text and job descriptions.
+A full-stack ATS-style resume analysis application that evaluates how well a resume matches a given job description.  
+The system uses a FastAPI backend to perform text analysis and scoring, and a Vite + React frontend for user interaction.
 
-This repository is a monorepo with separate `backend/` and `frontend/` folders so the services can be deployed independently.
-
----
-
-## Project structure
-A high-level view of the repository and the purpose of key files/folders.
-
-- `backend/` — FastAPI application and server-side logic
-  - `backend/main.py` — FastAPI app (exports `app`)
-  - `backend/requirements.txt` — Python dependencies
-  - `backend/.env.example` — example environment variables for server
-  - `backend/core/` — core ATS logic (skill extraction, vector scoring, templates)
-  - `backend/data/` — canonical skill/role datasets used by the engine
-
-- `frontend/` — Vite + React client
-  - `frontend/package.json` — npm scripts and dependencies
-  - `frontend/src/App.jsx` — main UI and analyze flow
-  - `frontend/src/` — other React components and assets
-
-- Root files
-  - `.gitignore` — files/folders excluded from git
-  - `.env.example` — top-level note about env usage
-  - `README.md` — this file
+This project is designed to demonstrate **backend development, machine-learning based text analysis, API design, and deployment** in a clean and production-ready manner.
 
 ---
 
-## What this project does
-- Extracts skills and relevant tokens from resume text and job descriptions.
-- Computes similarity and scoring to estimate how well a resume matches a job description.
-- Exposes a simple HTTP API for analysis (e.g., POST `/analyze` with resume text and job description).
+## Project Overview
+
+The ATS Resume Analyzer helps simulate how an Applicant Tracking System (ATS) evaluates resumes.
+
+It:
+- Accepts resume text and job description as input
+- Extracts skills and important keywords
+- Computes similarity between resume and job description
+- Generates an ATS match score
+- Provides matched skills, missing skills, and improvement suggestions
 
 ---
 
-## How to use (developer quick start)
+## Application Workflow
 
-### Prerequisites
-- Python 3.11+
-- Node.js 16+
+1. User enters resume text and job description in the frontend UI  
+2. Frontend sends a POST request to the backend API  
+3. Backend processes the input by:
+   - Cleaning and preprocessing text
+   - Extracting relevant skills
+   - Vectorizing text using TF-IDF
+   - Calculating similarity using cosine similarity
+   - Applying rule-based scoring for education and experience
+4. Backend returns structured analysis results
+5. Frontend displays ATS score and suggestions to the user  
 
-### Run backend (development)
-Open PowerShell in the project root and run:
+---
 
-```powershell
+## Tech Stack
+
+### Frontend
+- React
+- Vite
+- JavaScript
+- Fetch API
+
+### Backend
+- FastAPI
+- Python
+- Scikit-learn
+- NumPy
+
+### Deployment
+- Frontend deployed on **Vercel**
+- Backend deployed on **Render**
+
+---
+
+## Project Structure
+
+.
+├── backend/
+│ ├── main.py # FastAPI application entry point
+│ ├── requirements.txt # Backend dependencies
+│ ├── api/ # API routes
+│ ├── core/ # ATS logic (scoring, similarity, extraction)
+│ ├── llm/ # Optional LLM enhancement logic
+│ └── data/ # Skill and role reference data
+│
+├── frontend/
+│ ├── package.json # Frontend dependencies and scripts
+│ └── src/
+│ └── App.jsx # Main React UI and analysis flow
+│
+└── README.md
+
+
+---
+
+## API Reference
+
+### POST `/analyze`
+
+Analyzes resume text against a job description.
+
+**Request Body**
+```json
+{
+  "resume_text": "Experienced software engineer with Python and FastAPI",
+  "job_description": "Looking for a backend engineer with Python",
+  "use_llm": false
+}
+Response
+
+{
+  "ats_score": 77.04,
+  "level": "high",
+  "matched_skills": ["python"],
+  "missing_skills": [],
+  "education_note": "No strict education requirement in job description",
+  "experience_note": "No strong experience signals required",
+  "ml_suggestions": {
+    "skills": "Your listed skills closely match the job description.",
+    "experience": "Describe responsibilities and outcomes in projects or internships.",
+    "projects": "Highlight projects that demonstrate real development workflows."
+  }
+}
+Local Development Setup
+Prerequisites
+Python 3.11 or higher
+
+Node.js 16 or higher
+
+Run Backend (Development)
+From the project root:
+
 python -m venv .venv
-& '.\.venv\Scripts\Activate.ps1'
+& ".\.venv\Scripts\Activate.ps1"
 pip install -r backend/requirements.txt
-python -m uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
-```
+python -m uvicorn backend.main:app --reload --port 8000
+Backend will be available at:
 
-Notes:
-- For production, run the backend with an ASGI server such as Gunicorn + Uvicorn worker:
-  `gunicorn -k uvicorn.workers.UvicornWorker backend.main:app --bind 0.0.0.0:$PORT`
-- Configure environment variables needed by the backend in your host; do not commit secrets.
-
-### Run frontend (development)
-Open PowerShell in the `frontend` folder and run:
-
-```powershell
+http://127.0.0.1:8000
+Run Frontend (Development)
 cd frontend
 npm install
 npm run dev
-```
+Frontend will be available at:
 
-Vite will print a local URL (usually `http://localhost:5173`). The frontend calls the backend API (check `frontend/src/App.jsx` for the exact endpoint); set `VITE_API_URL` when needed.
+http://localhost:5173
+Ensure the frontend API URL points to the backend endpoint.
 
-### Example API usage
-The backend exposes a POST `/analyze` endpoint for scoring resume text against a job description.
+Production Deployment
+Backend
+Run using an ASGI server such as Gunicorn with Uvicorn worker
 
-JSON example:
-
-```powershell
-curl -X POST 'http://127.0.0.1:8000/analyze' -H 'Content-Type: application/json' -d '{"resume_text":"Experienced software engineer...","job_description":"Looking for a backend engineer with Python and FastAPI experience"}'
-```
-
----
-
-## Build for production
-- Frontend build:
-
-```powershell
-cd frontend
-npm install
+gunicorn -k uvicorn.workers.UvicornWorker main:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120
+Frontend
 npm run build
-```
+Deploy the build output to a static hosting service such as Vercel.
 
-- Backend: configure environment variables on your host (Render/Heroku/etc) and run using an ASGI server as shown above.
+Key Highlights
+End-to-end full-stack application
 
----
+Real ML-based text similarity (TF-IDF + cosine similarity)
 
-## Suggested next improvements
-- Add unit tests for `backend/core` functions (skill extraction, vector scoring).
-- Add E2E tests for the analyze flow between frontend and backend.
-- Add a small sample data page in the frontend for quick manual testing.
+Clean API design with FastAPI
 
----
+Production-ready deployment configuration
 
-## License
-- MIT
+Modular and maintainable project structure
 
----
+Future Enhancements
+Resume PDF upload and parsing
 
-## Contact
-- Add your contact link or GitHub profile if you want to publish it here.
+Authentication and user dashboards
 
-If you want, I can commit and push this README change to the repository, or add a short tree-style file listing.
+Resume history tracking
+
+Improved skill taxonomy
+
+Advanced ML or LLM-based feedback
+
+License
+MIT License
+
+Author
+Kaushik Edla
+GitHub: https://github.com/EdlaKoushik
+LinkedIn: https://www.linkedin.com/in/koushik-edla-46a7b6309/
