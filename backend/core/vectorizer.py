@@ -1,6 +1,6 @@
 # backend/core/vectorizer.py
 from sklearn.feature_extraction.text import TfidfVectorizer
-from backend.core.preprocessing import clean_text
+from core.preprocessing import clean_text
 
 
 def vectorize_texts(resume_text: str, jd_text: str):

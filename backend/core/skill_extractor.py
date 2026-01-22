@@ -1,5 +1,5 @@
-from backend.data.skills_db import SKILLS
-from backend.core.preprocessing import clean_text
+from data.skills_db import SKILLS
+from core.preprocessing import clean_text
 
 # ─────────────────────────────────────────
 # Implicit → Explicit skill expansion

@@ -3,7 +3,7 @@
 #suggestions
 
 import requests
-from backend.config import settings
+from config import settings
 
 OPENROUTER_URL="https://openrouter.ai/api/v1/chat/completions"
 

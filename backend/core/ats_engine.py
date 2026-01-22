@@ -1,15 +1,15 @@
-from backend.core.vectorizer import vectorize_texts
-from backend.core.similarity import cosine_similarity_score
-from backend.core.skill_extractor import extract_skills
-from backend.core.score_level import get_score_level
-from backend.core.suggestion_engine import generate_suggestions
+from core.vectorizer import vectorize_texts
+from core.similarity import cosine_similarity_score
+from core.skill_extractor import extract_skills
+from core.score_level import get_score_level
+from core.suggestion_engine import generate_suggestions
 
-from backend.core.education_score import education_score
-from backend.core.experience_relevance_score import experience_relevance_score
-from backend.core.role_weights import ROLE_WEIGHTS
+from core.education_score import education_score
+from core.experience_relevance_score import experience_relevance_score
+from core.role_weights import ROLE_WEIGHTS
 
-from backend.llm.suggestions import enhance_suggestions
-from backend.llm.rate_limiter import can_use_llm
+from llm.suggestions import enhance_suggestions
+from llm.rate_limiter import can_use_llm
 
 
 def analyze_resume(

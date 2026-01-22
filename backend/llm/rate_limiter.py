@@ -3,7 +3,7 @@
 #rate_limiter
 from collections import defaultdict 
 from datetime import date
-from backend.config import settings
+from config import settings
 
 
 __llm_usage=defaultdict(lambda:{"count":0,"date":date.today()})

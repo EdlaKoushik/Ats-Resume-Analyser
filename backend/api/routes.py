@@ -1,7 +1,7 @@
 # backend/api/routes.py
 from fastapi import Request, APIRouter
 from pydantic import BaseModel
-from backend.core.ats_engine import analyze_resume
+from core.ats_engine import analyze_resume
 from backend.llm.suggestions import enhance_suggestions
 from backend.llm.rate_limiter import can_usage_llm
 from backend.config import settings

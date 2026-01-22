@@ -8,7 +8,7 @@ and filters it against the reduced modern SKILLS set.
 
 Last filtered & verified: January 2026
 """
-from backend.data.skills_db import SKILLS as SKILLS_SET
+from data.skills_db import SKILLS as SKILLS_SET
 from typing import Dict, Any
 
 # ──────────────────────────────────────────────────────────────────────────────

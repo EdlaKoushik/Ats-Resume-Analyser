@@ -1,6 +1,6 @@
 from typing import Dict, List, Optional
-from backend.data.skill_meta import SKILL_META
-from backend.core.role_templates import ROLE_TEMPLATES
+from data.skill_meta import SKILL_META
+from core.role_templates import ROLE_TEMPLATES
 
 
 def generate_suggestions(
