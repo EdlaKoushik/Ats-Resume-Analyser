@@ -58,20 +58,42 @@ It:
 ## Project Structure
 
 .
-├── backend/
-│ ├── main.py # FastAPI application entry point
-│ ├── requirements.txt # Backend dependencies
-│ ├── api/ # API routes
-│ ├── core/ # ATS logic (scoring, similarity, extraction)
-│ ├── llm/ # Optional LLM enhancement logic
-│ └── data/ # Skill and role reference data
-│
-├── frontend/
-│ ├── package.json # Frontend dependencies and scripts
-│ └── src/
-│ └── App.jsx # Main React UI and analysis flow
-│
-└── README.md
+├─ .gitignore
+├─ README.md
+├─ requirements.txt
+├─ frontend/
+│  ├─ package.json
+│  ├─ vite.config.js
+│  ├─ public/
+│  └─ src/
+│     ├─ App.jsx
+│     ├─ index.jsx
+│     ├─ index.css
+│     ├─ components/
+│     │  └─ ... (UI components)
+│     └─ assets/
+│        └─ ...
+└─ backend/
+   ├─ main.py                 # FastAPI app (exports `app`)
+   ├─ requirements.txt        # backend deps (or root requirements.txt)
+   ├─ .env.example
+   ├─ api/
+   │  └─ routes.py
+   ├─ core/
+   │  ├─ suggestion_engine.py
+   │  ├─ ats_engine.py
+   │  ├─ skill_extractor.py
+   │  ├─ vectorizer.py
+   │  ├─ similarity.py
+   │  ├─ preprocessing.py
+   │  ├─ missing_skills.py
+   │  └─ score_level.py
+   ├─ llm/
+   │  ├─ suggestions.py
+   │  └─ rate_limiter.py
+   └─ data/
+      ├─ skills_db.py
+      └─ skill_meta.py
 
 
 ---
