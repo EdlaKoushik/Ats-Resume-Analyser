@@ -34,7 +34,7 @@ def enhance_suggestions(ml_output:dict)-> dict:
     - Do NOT change ATS score
     - Do NOT promise job selection
     Content to rewrite:
-    {ml_output["ml_suggestions",""]}
+    {ml_output("ml_suggestions", "")}
     """
     
     headers={"Authorization":f"Bearer {settings.OPENROUTER_API_KEY}",

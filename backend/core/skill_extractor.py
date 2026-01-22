@@ -1,3 +1,4 @@
+#skill_extractor.py
 from data.skills_db import SKILLS
 from core.preprocessing import clean_text
 

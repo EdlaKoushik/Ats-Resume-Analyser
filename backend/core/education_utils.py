@@ -1,3 +1,4 @@
+#education_utils.py
 EDU_NORMALIZATION = {
     "btech": "bachelor",
     "b.tech": "bachelor",

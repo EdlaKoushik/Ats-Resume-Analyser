@@ -1,3 +1,4 @@
+#role_templates.py
 """Role templates, groups and industry mapping extracted from suggestion_engine.py."""
 from typing import Dict
 

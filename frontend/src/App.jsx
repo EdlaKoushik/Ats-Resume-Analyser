@@ -9,7 +9,7 @@ function App() {
 
   // 🔒 Internal toggle (user doesn't need to see this)
   const USE_LLM = false;
-  const API_URL = "https://ats-resume-analyser-arxq.onrender.com";
+  const API_URL = "https://ats-resume-analyser-u5y6.onrender.com";
 
   const analyzeResume = async () => {
     if (!resume.trim() || !jd.trim()) {
