@@ -79,21 +79,43 @@ graph TB
 
 ```
 ats-resume-analyzer/
-├── backend/
-│   ├── main.py              # FastAPI application
-│   ├── analyzer.py          # Core analysis logic
-│   ├── requirements.txt     # Python dependencies
-│   └── Procfile            # Production configuration
-├── frontend/
-│   ├── src/
-│   │   ├── components/     # React components
-│   │   ├── services/       # API service
-│   │   └── App.jsx         # Main application
-│   ├── index.html          # Entry point
-│   ├── package.json        # Node dependencies
-│   └── vite.config.js      # Vite configuration
 ├── .gitignore
-└── README.md
+├── README.md
+├── requirements.txt                    # Root Python dependencies
+├── frontend/
+│   ├── package.json                    # Node.js dependencies
+│   ├── vite.config.js                  # Vite configuration
+│   ├── public/                         # Static assets
+│   └── src/
+│       ├── App.jsx                     # Main React component
+│       ├── index.jsx                   # React entry point
+│       ├── index.css                   # Global styles
+│       ├── components/                 # UI components
+│       │   ├── AnalyzerForm.jsx        # Input form component
+│       │   ├── ResultDisplay.jsx       # Results display component
+│       │   ├── SkillList.jsx           # Skills visualization
+│       │   ├── ScoreMeter.jsx          # Score visualization
+│       │   ├── Suggestions.jsx         # Improvement suggestions
+│       │   └── Layout.jsx              # Page layout
+│       └── assets/                     # Images, icons, etc.
+└── backend/
+    ├── main.py                         # FastAPI application entry point
+    ├── requirements.txt                # Backend-specific dependencies
+    ├── .env.example                    # Environment variables template
+    ├── api/
+    │   └── routes.py                   # API endpoint definitions
+    ├── core/                           # Core business logic
+    │   ├── suggestion_engine.py        # Generates improvement suggestions
+    │   ├── ats_engine.py              # Main ATS analysis orchestrator
+    │   ├── skill_extractor.py          # Extracts skills from text
+    │   ├── vectorizer.py               # TF-IDF vectorization logic
+    │   ├── similarity.py               # Cosine similarity calculations
+    │   ├── preprocessing.py            # Text cleaning and normalization
+    │   ├── missing_skills.py           # Identifies missing required skills
+    │   └── score_level.py              # Score categorization and levels
+    └── data/                           # Data management
+        ├── skills_db.py                # Skills database and taxonomy
+        └── skill_meta.py               # Skill metadata and categorization
 ```
 
 ## 🔧 Installation & Local Development
