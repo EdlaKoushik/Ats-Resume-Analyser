@@ -19,8 +19,8 @@ A full-stack ATS-style resume analysis application that evaluates how well a res
 
 ## 🚀 Live Demo
 
-- **Frontend**: [https://ats-resume-analyzer.vercel.app](https://ats-resume-analyser-jxoo.vercel.app/)
-- **Backend API**: [https://ats-resume-analyzer.onrender.com](https://ats-resume-analyser-u5y6.onrender.com/)
+- **Frontend**: [https://ats-resume-analyzer-jxoo.vercel.app](https://ats-resume-analyser-jxoo.vercel.app/)
+- **Backend API**: [https://ats-resume-analyzer-u5y6.onrender.com](https://ats-resume-analyser-u5y6.onrender.com/)
 
 ## 📊 How It Works
 
