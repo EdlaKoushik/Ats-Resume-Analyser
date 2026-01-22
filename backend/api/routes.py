@@ -2,9 +2,9 @@
 from fastapi import Request, APIRouter
 from pydantic import BaseModel
 from core.ats_engine import analyze_resume
-from backend.llm.suggestions import enhance_suggestions
-from backend.llm.rate_limiter import can_usage_llm
-from backend.config import settings
+from llm.suggestions import enhance_suggestions
+from llm.rate_limiter import can_usage_llm
+from config import settings
 
 
 router = APIRouter()
