@@ -9,6 +9,7 @@ function App() {
 
   // 🔒 Internal toggle (user doesn't need to see this)
   const USE_LLM = false;
+  const API_URL = "https://ats-resume-analyser-arxq.onrender.com";
 
   const analyzeResume = async () => {
     if (!resume.trim() || !jd.trim()) {
@@ -21,7 +22,7 @@ function App() {
     setResult(null);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/analyze", {
+      const response = await fetch(`${API_URL}/analyze`,{
         method: "POST",
         headers: {
           "Content-Type": "application/json",
