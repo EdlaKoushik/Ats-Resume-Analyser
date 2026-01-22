@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 load_dotenv()
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.api.routes import router
+from api.routes import router
 
 
 app = FastAPI(
@@ -15,6 +15,7 @@ app = FastAPI(
 # Configure CORS so the frontend (Vite dev server) can make requests
 origins = [
     "http://localhost:5173",
+    "https://ats-resume-analyser-jxoo.vercel.app",
     "http://127.0.0.1:5173",
 ]
 
