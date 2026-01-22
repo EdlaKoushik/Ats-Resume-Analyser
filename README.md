@@ -62,38 +62,38 @@ It:
 ├─ README.md
 ├─ requirements.txt
 ├─ frontend/
-│  ├─ package.json
-│  ├─ vite.config.js
-│  ├─ public/
-│  └─ src/
-│     ├─ App.jsx
-│     ├─ index.jsx
-│     ├─ index.css
-│     ├─ components/
-│     │  └─ ... (UI components)
-│     └─ assets/
-│        └─ ...
+│ ├─ package.json
+│ ├─ vite.config.js
+│ ├─ public/
+│ └─ src/
+│ ├─ App.jsx
+│ ├─ index.jsx
+│ ├─ index.css
+│ ├─ components/
+│ │ └─ ... (UI components)
+│ └─ assets/
+│ └─ ...
 └─ backend/
-   ├─ main.py                 # FastAPI app (exports `app`)
-   ├─ requirements.txt        # backend deps (or root requirements.txt)
-   ├─ .env.example
-   ├─ api/
-   │  └─ routes.py
-   ├─ core/
-   │  ├─ suggestion_engine.py
-   │  ├─ ats_engine.py
-   │  ├─ skill_extractor.py
-   │  ├─ vectorizer.py
-   │  ├─ similarity.py
-   │  ├─ preprocessing.py
-   │  ├─ missing_skills.py
-   │  └─ score_level.py
-   ├─ llm/
-   │  ├─ suggestions.py
-   │  └─ rate_limiter.py
-   └─ data/
-      ├─ skills_db.py
-      └─ skill_meta.py
+├─ main.py # FastAPI app (exports app)
+├─ requirements.txt # Backend dependencies
+├─ .env.example
+├─ api/
+│ └─ routes.py
+├─ core/
+│ ├─ ats_engine.py
+│ ├─ suggestion_engine.py
+│ ├─ skill_extractor.py
+│ ├─ vectorizer.py
+│ ├─ similarity.py
+│ ├─ preprocessing.py
+│ ├─ missing_skills.py
+│ └─ score_level.py
+├─ llm/
+│ ├─ suggestions.py
+│ └─ rate_limiter.py
+└─ data/
+├─ skills_db.py
+└─ skill_meta.py
 
 
 ---
